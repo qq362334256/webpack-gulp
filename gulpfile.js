@@ -72,7 +72,7 @@ config = {
     globalModule: {
         'CONSTANT': 'common/config/constant.config.js' // 全局常量模块
     },
-    imgLimit: 1024 * 5,
+    imgLimit: 1024 * 1,
 };
 
 /**
