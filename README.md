@@ -1,6 +1,9 @@
 # webpack-gulp
 这个示例讲诉了webpack联合gulp的构建任务
 
+# 版本
+这个构建为初级版本，不过已经适用大部分的场景构建了，后期将跟进：ftp上传到生产环境、cnd等云服务配置、修改.PHP文件等功能
+
 ## 使用步骤
 * 1、npm install
 * 2、gulp dev
