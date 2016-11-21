@@ -10,3 +10,24 @@
 53行原始：else if(transformedDeclaration.property === 'background') {
 
 修改为：else if(transformedDeclaration.property === 'background' && /.+\-sprite.+\.png/i.test(transformedDeclaration.value)) {
+
+# 工程结构
+-src // 开发目录
+    -common // 公共模块
+           -config // 配置文件目录
+           -js // js文件目录
+           -css // css文件目录
+           -... // 其他文件目录
+           -entry.js // common模块入口，这是模块入口命名规范，不能随意改变
+    -index // index模块
+          -config // 配置文件目录
+          -js // js文件目录
+          -css // css文件目录
+          -images // iamges文件目录
+          -view // html文件劜
+          -... // 其他文件目录
+          -entry.js // index模块入口，这是模块入口命名规范，不能随意改变
+-dev // 测试打包文件目录
+-static // 生产打包文件目录
+-gulpfile.js // gulp构建配置
+-package.json
