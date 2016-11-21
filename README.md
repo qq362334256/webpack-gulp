@@ -58,7 +58,7 @@
 
 3、dev、static 目录是根据命令动态生成的
 
-4、所有需要合并的精灵图必须是 .PNG 格式；精力图命名规范：模块名-sprite.png,示例：index-sprite.png
+4、所有需要合并的精灵图必须是 .PNG 格式；精灵图命名规范：模块名-sprite.png,示例：index-sprite.png
 
 5、所有模块下的 js、css、images、html 文件目录命令也是写好的，除非你自己去改gulefile.js的 配置
 
