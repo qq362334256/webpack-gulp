@@ -1,6 +1,11 @@
 # webpack-gulp
 这个示例讲诉了webpack联合gulp的构建任务
 
+## 使用步骤
+* 1、npm install
+* 2、gulp dev
+* 3、gulp pro
+
 ## 注意（特别注意，老司机告诉你这里容易发生事故）
 找到工程目录下：node_modules\gulp-css-spriter-retina\lib\map-over-styles-and-transform-background-image-declarations.js 修改代码如下：
 
