@@ -5,11 +5,11 @@
 
 // 依赖模块
 let fs = require('fs'),                                         // 文件操作模块
+    del = require('del'),                                       // 删除文件夹插件模块
     path = require('path'),                                     // 路径操作模块
     gulp = require('gulp'),                                     // gulp模块
     gutil = require('gulp-util'),                               // 功能集插件模块
     colors = require('colors'),                                 // 颜色log插件模块
-    gclean = require('gulp-clean'),                             // 删除文件夹插件模块
     gsprite = require('gulp-css-spriter-retina'),               // 雪碧图插件模块
     grename = require('gulp-rename'),                           // 重命名插件模块
     guglify = require('gulp-uglify'),                           // js压缩插件模块
@@ -320,8 +320,7 @@ _getDirFile = (type = 'css', callback = () => {}) => {
  *      gulp clean:dev
  */
 gulp.task('clean:dev', () => {
-    gulp.src(config.path.devOutput)
-        .pipe(gclean());
+    del.sync(config.path.devOutput);
 });
 
 /**
@@ -381,8 +380,7 @@ gulp.task('dev', ['clean:dev'], () => {
  *      gulp clean:pro
  */
 gulp.task('clean:pro', () => {
-    gulp.src(config.path.proOutput)
-        .pipe(gclean());
+    del.sync(config.path.proOutput);
 });
 
 /**

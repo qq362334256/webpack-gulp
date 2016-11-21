@@ -1,38 +1,38 @@
 {
-    "name": "webpack-gulp",
-    "version": "0.0.5",
-    "description": "This example speaks about the construction of the webpack joint gulp task",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "webpack",
-        "gulp",
-        "webpack-gulp"
-    ],
-    "author": "miaoyu",
-    "license": "ISC",
-    "dependencies": {
-        "autoprefixer": "^6.5.3",
-        "browser-sync": "^2.17.6",
-        "colors": "^1.1.2",
-        "css-loader": "^0.25.0",
-        "extract-text-webpack-plugin": "^1.0.1",
-        "file-loader": "^0.9.0",
-        "gulp": "^3.9.1",
-        "gulp-clean": "^0.3.2",
-        "gulp-clean-css": "^2.0.13",
-        "gulp-css-spriter-retina": "^0.3.4",
-        "gulp-rename": "^1.2.2",
-        "gulp-uglify": "^2.0.0",
-        "gulp-util": "^3.0.7",
-        "html-webpack-plugin": "^2.24.1",
-        "less": "^2.7.1",
-        "less-loader": "^2.2.3",
-        "postcss-loader": "^1.1.1",
-        "style-loader": "^0.13.1",
-        "url-loader": "^0.5.7",
-        "webpack": "^1.13.3"
-    }
+  "name": "webpack-gulp",
+  "version": "0.0.5",
+  "description": "This example speaks about the construction of the webpack joint gulp task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "gulp",
+    "webpack-gulp"
+  ],
+  "author": "miaoyu",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^6.5.3",
+    "browser-sync": "^2.17.6",
+    "colors": "^1.1.2",
+    "css-loader": "^0.25.0",
+    "del": "^2.2.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-css-spriter-retina": "^0.3.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "html-webpack-plugin": "^2.24.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "postcss-loader": "^1.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3"
+  }
 }
