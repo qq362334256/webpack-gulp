@@ -50,7 +50,9 @@
 
 ## 说明
 1、所有开发必须放在src目录下，以common、index、public为模块文件名
+
 2、common、index··· 等模块跟目录下必须存在 entry.js 文件为该模块入口
+
 3、dev、static 目录是根据命令动态生成的
 
 ## 命令
