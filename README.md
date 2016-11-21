@@ -1,7 +1,6 @@
 # webpack-gulp
 这个示例讲诉了webpack联合gulp的构建任务
 
-
 ## 注意（特别注意，老司机告诉你这里容易发生事故）
 找到工程目录下：node_modules\gulp-css-spriter-retina\lib\map-over-styles-and-transform-background-image-declarations.js 修改代码如下：
 
@@ -20,7 +19,6 @@
   // 修改
   else if(transformedDeclaration.property === 'background' && /.+\-sprite.+\.png/i.test(transformedDeclaration.value)) {
 ```
-
 
 ## 工程结构
 
@@ -45,3 +43,15 @@
 ├── gulpfile.js          // gulp构建配置
 ├── package.json
 ```
+
+## 说明
+1、所有开发必须放在src目录下，以common、index、public为模块文件名
+2、common、index··· 等模块跟目录下必须存在 entry.js 文件为该模块入口
+3、dev、static 目录是根据命令动态生成的
+
+## 命令
+*gulp dev - 开启测试环境
+*gulp pro - 开启生成打包
+
+## 作者
+[喵鱼] - [362334256@qq.com]
