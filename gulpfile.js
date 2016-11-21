@@ -363,7 +363,7 @@ gulp.task('server:dev', () => {
     devServer = browsersync.create('devServer');
 
     // 初始化服务
-    devServer.init(getDevServerConfig());
+    devServer.init(_getDevServerConfig());
 });
 
 /**
