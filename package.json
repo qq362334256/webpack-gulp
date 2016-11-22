@@ -1,6 +1,6 @@
 {
   "name": "webpack-gulp",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "This example speaks about the construction of the webpack joint gulp task",
   "main": "index.js",
   "scripts": {
@@ -18,10 +18,10 @@
     "browser-sync": "^2.17.6",
     "colors": "^1.1.2",
     "css-loader": "^0.25.0",
-    "del": "^2.2.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.13",
     "gulp-css-spriter-retina": "^0.3.4",
     "gulp-rename": "^1.2.2",

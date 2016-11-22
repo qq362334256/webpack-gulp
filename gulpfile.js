@@ -5,10 +5,10 @@
 
 // 依赖模块
 let fs = require('fs'),                                         // 文件操作模块
-    del = require('del'),                                       // 删除文件夹插件模块
     path = require('path'),                                     // 路径操作模块
     gulp = require('gulp'),                                     // gulp模块
     gutil = require('gulp-util'),                               // 功能集插件模块
+    gclean = require('gulp-clean'),                             // 删除文件插件模块
     colors = require('colors'),                                 // 颜色log插件模块
     gsprite = require('gulp-css-spriter-retina'),               // 雪碧图插件模块
     grename = require('gulp-rename'),                           // 重命名插件模块
@@ -20,8 +20,8 @@ let fs = require('fs'),                                         // 文件操作�
     htmlWebpackPlugin = require('html-webpack-plugin'),         // webpack生成html插件模块
     extractTextPlugin = require('extract-text-webpack-plugin'), // webpack剥离css插件模块
 
-// 声明变量
-    config, devServer,
+    // 声明变量
+    config, devServer, reloadServer,
     _getDevServerConfig, _getDirFile, _getEntry, _getOutput, _getLoader, _getPlugins, _getPostcss, _getResolve, _getWebpackConfig;
 
 
@@ -263,14 +263,6 @@ _getDevServerConfig = () => {
         ui: false,                                   // 是否启动ui服务
         host: config.server.host,                    // 静态服务ip地址
         port: config.server.port,                    // 静态服务端口号
-        files: [
-            `${devOutput}/view/*.html`,              // 监听html格式文件变化
-            `${devOutput}/js/*.js`,                  // 监听js格式文件变化
-            `${devOutput}/css/*.css`,                // 监听css格式文件变化
-            `${devOutput}/images/*.png`,             // 监听png格式文件变化
-            `${devOutput}/images/*.jpg`,             // 监听jpg格式文件变化
-            `${devOutput}/images/*.gif`              // 监听gif格式文件变化
-        ],
         server: {                                    // 静态服务器配置
             baseDir: config.path.devOutput,          // 服务器映射静态资源目录
             index: `/view/${defaultIndex}.tem.html`, // 初始打开的网页path
@@ -320,7 +312,8 @@ _getDirFile = (type = 'css', callback = () => {}) => {
  *      gulp clean:dev
  */
 gulp.task('clean:dev', () => {
-    del.sync(config.path.devOutput);
+    return gulp.src(config.path.devOutput, {read: false})
+               .pipe(gclean());
 });
 
 /**
@@ -328,9 +321,9 @@ gulp.task('clean:dev', () => {
  * 命令：
  *      gulp webpack:dev
  */
-gulp.task('webpack:dev', () => {
+gulp.task('webpack:dev', ['clean:dev'], () => {
     // 配置webpack编译
-    webpack(_getWebpackConfig(), (err, stats) => {
+    return webpack(_getWebpackConfig(), (err, stats) => {
         // webpack 错误时及时报错
         if (err) throw new gutil.PluginError('webpack:build', err);
 
@@ -350,6 +343,9 @@ gulp.task('webpack:dev', () => {
             cachedAssets: false,
             chunkModules: false,
         }));
+
+        // 刷新游览器
+        reloadServer();
     });
 });
 
@@ -360,6 +356,7 @@ gulp.task('webpack:dev', () => {
  */
 gulp.task('server:dev', () => {
     devServer = browsersync.create('devServer');
+    reloadServer = devServer.reload;
 
     // 初始化服务
     devServer.init(_getDevServerConfig());
@@ -370,9 +367,7 @@ gulp.task('server:dev', () => {
  * 命令：
  *      gulp dev
  */
-gulp.task('dev', ['clean:dev'], () => {
-    gulp.start('webpack:dev', 'server:dev');
-});
+gulp.task('dev', ['server:dev', 'webpack:dev']);
 
 /**
  * 《clean:pro 清除生产资源目录任务》
@@ -380,7 +375,8 @@ gulp.task('dev', ['clean:dev'], () => {
  *      gulp clean:pro
  */
 gulp.task('clean:pro', () => {
-    del.sync(config.path.proOutput);
+    return gulp.src(config.path.proOutput, {read: false})
+               .pipe(gclean());
 });
 
 /**
@@ -388,7 +384,7 @@ gulp.task('clean:pro', () => {
  * 命令：
  *      gulp sprite-css:pro
  */
-gulp.task('sprite-css:pro', () => {
+gulp.task('sprite-css:pro', ['clean:pro'], () => {
     _getDirFile('css', (path, filename) => {
         gulp.src(path)
             .pipe(gsprite({ // 合并精灵图
@@ -409,7 +405,7 @@ gulp.task('sprite-css:pro', () => {
  * 命令：
  *      gulp js-pro
  */
-gulp.task('js-pro', () => {
+gulp.task('js-pro', ['clean:pro'], () => {
     _getDirFile('js', (path, filename) => {
         gulp.src(path)
             .pipe(guglify())
@@ -423,6 +419,4 @@ gulp.task('js-pro', () => {
  * 命令：
  *      gulp pro
  */
-gulp.task('pro', ['clean:pro'], () => {
-    gulp.start('sprite-css:pro', 'js-pro');
-});
+gulp.task('pro', ['sprite-css:pro', 'js-pro']);
